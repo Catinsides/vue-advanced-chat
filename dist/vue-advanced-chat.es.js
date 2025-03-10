@@ -12232,7 +12232,14 @@ const _sfc_main$m = {
       return null;
     },
     typingUsers() {
-      return typingText(this.room, this.currentUserId, this.textMessages);
+      let typingTexts = typingText(this.room, this.currentUserId, this.textMessages);
+      console.log(typingTexts, 11111);
+      console.log(this.textMessages.IS_TYPING, 22222);
+      if (typingTexts !== this.textMessages.IS_TYPING) {
+        return typingTexts;
+      } else {
+        return "";
+      }
     },
     isMessageCheckmarkVisible() {
       return !this.typingUsers && this.room.lastMessage && !this.room.lastMessage.deleted && this.room.lastMessage.senderId === this.currentUserId && (this.room.lastMessage.saved || this.room.lastMessage.distributed || this.room.lastMessage.seen);
@@ -12359,7 +12366,7 @@ function _sfc_render$m(_ctx, _cache, $props, $setup, $data, $options) {
               };
             })
           ]), 1032, ["message-id", "room-id", "content", "deleted", "users", "text-messages", "text-formatting", "link-options"])) : createCommentVNode("", true),
-          !$props.room.lastMessage && $options.typingUsers ? (openBlock(), createElementBlock("div", _hoisted_8$4, toDisplayString($options.typingUsers), 1)) : createCommentVNode("", true),
+          !$props.room.lastMessage && $options.typingUsers ? (openBlock(), createElementBlock("div", _hoisted_8$4, toDisplayString($options.typingUsers) + "33333 ", 1)) : createCommentVNode("", true),
           createBaseVNode("div", _hoisted_9$4, [
             $props.room.unreadCount ? (openBlock(), createElementBlock("div", _hoisted_10$4, toDisplayString($props.room.unreadCount), 1)) : createCommentVNode("", true),
             renderSlot(_ctx.$slots, "room-list-options_" + $props.room.roomId, {}, () => [
